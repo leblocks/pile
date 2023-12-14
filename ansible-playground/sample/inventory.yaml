@@ -1,0 +1,13 @@
+all:
+  hosts:
+    docker_host_one:
+      ansible_host: host.docker.internal
+      ansible_port: 2222
+      test_var1: 'Hello World!'
+
+  vars:
+    ansible_user: testuser
+    ansible_password: 1111
+    test_var1: amazing variable value
+    test_var2: 256
+
