@@ -1,0 +1,27 @@
+services:
+  control-node:
+    build:
+      context: .
+      dockerfile: control-node.dockerfile
+      args:
+        PYTHON_VERSION: 3.9.9
+        ANSIBLE_VERSION: 5.9.0
+    environment:
+      ANSIBLE_HOST_KEY_CHECKING: False
+    volumes:
+      - ./sample:/ansible/sample
+
+  managed-node:
+    build:
+      context: .
+      dockerfile: managed-node.dockerfile
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/London
+      USER_NAME: testuser
+      USER_PASSWORD: 1111
+      PASSWORD_ACCESS: true
+    ports:
+      - "2222:2222"
+
